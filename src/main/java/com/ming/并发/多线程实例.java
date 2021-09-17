@@ -1,4 +1,4 @@
-package com.ming;
+package com.ming.并发;
 
 import org.junit.jupiter.api.Test;
 

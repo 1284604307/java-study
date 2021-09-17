@@ -1,12 +1,6 @@
-package com.ming;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+package com.ming.并发;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 
 public class TestCompletableFuture {

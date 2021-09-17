@@ -1,4 +1,4 @@
-package com.ming;
+package com.ming.并发;
 
 public class volatile_synchronized {
     public static void main(String[] args) {
