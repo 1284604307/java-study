@@ -9,7 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="16" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="JUnit5.7.0">
@@ -27,6 +27,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.auto.service:auto-service:1.0-rc5" level="project" />
     <orderEntry type="library" name="Maven: com.google.auto.service:auto-service-annotations:1.0-rc5" level="project" />
     <orderEntry type="library" name="Maven: com.google.auto:auto-common:0.10" level="project" />
@@ -41,7 +42,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.sun:tools:1.8">
         <CLASSES>
-          <root url="jar://C:/JAVA/JDK1.8/lib/tools.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../java/jdk-16.0.1/../lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

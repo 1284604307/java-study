@@ -1,54 +1,40 @@
 package com.ming;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 
 public class Main {
-    static Random random = new Random();
-    private static int i = 1;
 
-    private static  int get(){
-        return i;
-    }
+    static Random random = new Random();
+    private static  int i = 1;
 
     private static synchronized void add(int o){
-
+        System.out.println(Thread.currentThread().getName()+":入>>>"+i+" <<<"+(i+o));
+        int m = i;
         try {
-            int t = random.nextInt(100);
-//                    System.out.println("延迟"+t);
-            Thread.sleep(300+10*t);
+            Thread.sleep(500+o* 10L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        int m = get();
-        System.out.println(Thread.currentThread().getName()+":>>>"+m);
-        m += o;
-
+        i = o+m;
+        System.out.println(Thread.currentThread().getName()+"<<<"+i);
         try {
-            int t = random.nextInt(100);
-//                    System.out.println("模拟耗时操作"+t);
-            Thread.sleep(300+10*t);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        set(m);
-        System.out.println(Thread.currentThread().getName()+":<<<"+m);
-        try {
-//                    System.out.println("模拟耗时操作"+t);
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    private static  void  set(int io){
-        i = io;
-    }
     static class updateT extends Thread{
-        int o = 1;
+        int o;
         updateT(int i) {
             this.o = i;
         }
-
         @Override
         public void run() {
             while (i<1000){
@@ -56,11 +42,12 @@ public class Main {
             }
         }
     }
-    public static void main(String[] args) {
-
-        new updateT(1).start();
-        new updateT(55).start();
-        new updateT(1).start();
-        new updateT(1).start();
+    public static void main(String[] args) throws IOException {
+        new updateT(-1).start();
+        new updateT(10).start();
+        TestFileUntil("","");
+    }
+    static void TestFileUntil(String a,String b) throws IOException {
+        FileUtils.copyURLToFile(new URL(a),new File(b));
     }
 }
