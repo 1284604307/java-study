@@ -1,10 +1,25 @@
 package com.ming.dataStruct;
 
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * 二叉树的链表实现
+ * 广义表实现就不写了，我也不会。emmm
  * @param <T>
  */
 public class BTree<T> {
+
+    public static void main(String[] args) {
+        BTree<String> tree = new BTree<>();
+        tree.insertRoot("哈哈哈哈");
+        tree.insertRoot("嘀嘀嘀");
+        tree.postorder();
+        tree.preorder();
+        tree.inorder();
+
+        tree.levelOrder();
+    }
 
     class BTreeNode<T> implements Tree.TreeNode<T>{
         public T data;
@@ -85,17 +100,53 @@ public class BTree<T> {
     }
 
     /**
-     * 中序遍历
+     * 后根次序遍历
      */
     public void postorder() {
-
+        postorder(root);
+        System.out.println();
+    }
+    private void postorder(BTreeNode<T> p) {
+        if(p!=null){
+            postorder(p.left);
+            preorder(p.right);
+            System.out.println(p.data.toString());
+        }
+    }
+    /**
+     * 中根次序遍历
+     */
+    public void inorder() {
+        inorder(root);
+        System.out.println();
+    }
+    private void inorder(BTreeNode<T> p) {
+        if(p!=null){
+            postorder(p.left);
+            System.out.println(p.data.toString());
+            preorder(p.right);
+        }
     }
 
     /**
-     * 层次遍历
+     * 层序遍历
      */
-    public void levelorder() {
-
+    public void levelOrder() {
+        System.out.println("层序遍历");
+        Queue<BTreeNode<T>> queue = new LinkedBlockingQueue<>();
+        BTreeNode<T> node = this.root; //根节点不入队
+        while (node!=null){
+            // 访问 parent node
+            System.out.println(node.data);
+            // 左子节点入队
+            if (node.left!=null)
+                queue.add(node.left);
+            // 右子节点入队
+            if(node.right!=null)
+                queue.add(node.right);
+            node = queue.poll();
+        }
+        System.out.println();
     }
 
 
